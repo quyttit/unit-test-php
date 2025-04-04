@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lab-php
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+    working_dir: /var/www/html
+    command: php -S 0.0.0.0:80 -t /var/www/html
+
+networks:
+  lab-network:
+    driver: bridge
